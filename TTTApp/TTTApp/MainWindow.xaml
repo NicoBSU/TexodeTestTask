@@ -1,0 +1,42 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        x:Class="TTTApp.MainWindow"
+        mc:Ignorable="d"
+        Title="Fitness App" Height="850" Width="1200" Loaded="Window_Loaded">
+
+    <Border Padding="10">
+        <StackPanel>
+            <Grid Height="700">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <DataGrid Grid.Column="0" x:Name="UsersDataGrid" FontWeight="Bold" AutoGenerateColumns="False"
+                      MouseDoubleClick="Row_MouseDoubleClick">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Key}" Header="Фио" IsReadOnly="True" CanUserReorder="False" CanUserSort="False"/>
+                        <DataGridTextColumn Binding="{Binding Value.AverageSteps}" Header="Среднее кол-во шагов" IsReadOnly="True" CanUserReorder="False" CanUserSort="False"/>
+                        <DataGridTextColumn Binding="{Binding Value.BestResult}" Header="Лучший результат" IsReadOnly="True" CanUserReorder="False" CanUserSort="False"/>
+                        <DataGridTextColumn Binding="{Binding Value.WorstResult}" Header="Худший результат" IsReadOnly="True" CanUserReorder="False" CanUserSort="False"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <lvc:CartesianChart x:Name="DataChart" Grid.Column="1" LegendLocation="Left">
+
+                </lvc:CartesianChart>
+
+            </Grid>
+            <Button Content="Save Data For Current User" Name="SaveButton" Click="SaveData" 
+                    HorizontalAlignment="Center" Height="50" Width="200" Margin="0 30 0 0" VerticalAlignment="Bottom"/>
+        </StackPanel>
+        
+        
+        
+
+    </Border>
+</Window>
