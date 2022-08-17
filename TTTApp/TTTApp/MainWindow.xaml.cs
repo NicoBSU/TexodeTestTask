@@ -40,7 +40,7 @@ namespace TTTApp
             InitializeChart();
             currentUserData = UserData.ElementAt(0).Value;
             ChangeChartData(0);
-            CheckPercentageDifference(0);
+            CheckPercentageDifference();
         }
 
         private void Row_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -54,7 +54,6 @@ namespace TTTApp
             var index = row.GetIndex();
             currentUserData = UserData.ElementAt(index).Value;
             ChangeChartData(index);
-            CheckPercentageDifference(index);
         }
 
         private void SaveData(object sender, RoutedEventArgs e)
@@ -95,7 +94,7 @@ namespace TTTApp
             DataChart.Series = series;
         }
 
-        private void CheckPercentageDifference(int index)
+        private void CheckPercentageDifference()
         {
             foreach (var user in UserData)
             {
