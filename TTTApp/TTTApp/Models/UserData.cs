@@ -16,5 +16,7 @@ namespace TTTApp.Models
         public double AverageSteps { get; set; }
         public int BestResult { get; set; }
         public int WorstResult { get; set; }
+
+        public bool StepsComparisonPassed { get; set; } = false;
     }
 }

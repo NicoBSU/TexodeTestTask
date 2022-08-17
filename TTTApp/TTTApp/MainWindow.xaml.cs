@@ -40,7 +40,7 @@ namespace TTTApp
             InitializeChart();
             currentUserData = UserData.ElementAt(0).Value;
             ChangeChartData(0);
-            //CheckPercentageDifference(0);
+            CheckPercentageDifference(0);
         }
 
         private void Row_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -54,7 +54,7 @@ namespace TTTApp
             var index = row.GetIndex();
             currentUserData = UserData.ElementAt(index).Value;
             ChangeChartData(index);
-            //CheckPercentageDifference(index);
+            CheckPercentageDifference(index);
         }
 
         private void SaveData(object sender, RoutedEventArgs e)
@@ -97,7 +97,22 @@ namespace TTTApp
 
         private void CheckPercentageDifference(int index)
         {
-            //Unfinished
+            foreach (var user in UserData)
+            {
+                var averageSteps = user.Value.AverageSteps;
+                if (user.Value.WorstResult > 1.2 * averageSteps ||
+                    user.Value.BestResult > 1.2 * averageSteps ||
+                    user.Value.WorstResult < 0.8 * averageSteps ||
+                    user.Value.BestResult < 0.8 * averageSteps)
+                {
+                    user.Value.StepsComparisonPassed = true;
+                }
+
+                else
+                {
+                    user.Value.StepsComparisonPassed = false;
+                }
+            }
         }
     }
 }

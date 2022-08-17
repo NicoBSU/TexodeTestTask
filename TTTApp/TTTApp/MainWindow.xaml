@@ -18,6 +18,19 @@
 
                 <DataGrid Grid.Column="0" x:Name="UsersDataGrid" FontWeight="Bold" AutoGenerateColumns="False"
                       MouseDoubleClick="Row_MouseDoubleClick">
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Value.StepsComparisonPassed}" Value="true">
+                                    <Setter Property="Background" Value="Beige"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Value.StepsComparisonPassed}" Value="false">
+                                    <Setter Property="Background" Value="White"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.RowStyle>
+                    
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Key}" Header="Фио" IsReadOnly="True" CanUserReorder="False" CanUserSort="False"/>
                         <DataGridTextColumn Binding="{Binding Value.AverageSteps}" Header="Среднее кол-во шагов" IsReadOnly="True" CanUserReorder="False" CanUserSort="False"/>
